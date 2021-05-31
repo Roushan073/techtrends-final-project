@@ -46,10 +46,10 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-        app.logger.info(f'A Non-Existng article with id: {post_id} is accessed')
+        app.logger.info('A Non-Existng article with id: {} is accessed'.format(post_id))
         return render_template('404.html'), 404
     else:
-        app.logger.info(f'Article: {post[2]} with id: {post_id} is accessed')
+        app.logger.info('Article: {} with id: {} is accessed'.format(post[2], post_id))
         return render_template('post.html', post=post)
 
 # Define the About Us page
@@ -76,7 +76,7 @@ def create():
             connection.close()
             db_connection_count += 1
 
-            app.logger.info(f'A new Article: {title} is created')
+            app.logger.info('A new Article: {} is created'.format(title))
 
             return redirect(url_for('index'))
 
