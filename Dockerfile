@@ -2,7 +2,7 @@ FROM python:3.7
 
 LABEL maintainer="Roushan Kumar"
 
-COPY .. /app
+COPY /techtrends /app
 
 WORKDIR /app
 
