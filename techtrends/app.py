@@ -4,11 +4,12 @@ from flask import Flask, jsonify, json, render_template, request, url_for, redir
 from werkzeug.exceptions import abort
 
 import logging
+import sys
 
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
-app.logger.setLevel(logging.INFO)
+# app.logger.setLevel(logging.INFO)
 
 # Variable to keep track of number of connections made to the Database
 db_connection_count = 0
@@ -16,28 +17,29 @@ db_connection_count = 0
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
+    global db_connection_count
+    db_connection_count += 1
+
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+
     return connection
 
 # Function to get a post using its ID
 def get_post(post_id):
-    global db_connection_count
     connection = get_db_connection()
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     connection.close()
-    db_connection_count += 1
+
     return post
 
 # Define the main route of the web application 
 @app.route('/')
 def index():
-    global db_connection_count
     connection = get_db_connection()
     posts = connection.execute('SELECT * FROM posts').fetchall()
     connection.close()
-    db_connection_count += 1
     return render_template('index.html', posts=posts)
 
 # Define how each individual article is rendered 
@@ -68,13 +70,11 @@ def create():
         if not title:
             flash('Title is required!')
         else:
-            global db_connection_count
             connection = get_db_connection()
             connection.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
                          (title, content))
             connection.commit()
             connection.close()
-            db_connection_count += 1
 
             app.logger.info('A new Article: {} is created'.format(title))
 
@@ -97,11 +97,9 @@ def health_check():
 
 # Function to get total posts count in the DB
 def get_total_posts_count():
-    global db_connection_count
     connection = get_db_connection()
     posts_count = connection.execute('SELECT count(*) FROM posts').fetchone()[0]
     connection.close()
-    db_connection_count += 1
 
     return posts_count
 
@@ -122,4 +120,12 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
+    # set logger to handle STDOUT and STDERR
+    stdout_handler = logging.StreamHandler(sys.stdout)  # stdout handler
+    stderr_handler = logging.StreamHandler(sys.stderr)  # stderr handler
+    handlers = [stderr_handler, stdout_handler]
+
+    # format output
+    format_output = '%(levelname)s: %(name)-2s - [%(asctime)s] - %(message)s'
+    logging.basicConfig(format=format_output, level=logging.DEBUG, handlers=handlers)
     app.run(host='0.0.0.0', port='3111')
