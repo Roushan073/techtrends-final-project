@@ -128,4 +128,5 @@ if __name__ == "__main__":
     # format output
     format_output = '%(levelname)s: %(name)-2s - [%(asctime)s] - %(message)s'
     logging.basicConfig(format=format_output, level=logging.DEBUG, handlers=handlers)
+
     app.run(host='0.0.0.0', port='3111')

@@ -11,35 +11,28 @@
 # docker logs <CONTAINER_ID>
 
 ## Logs from the container running the TechTrends application
- * Serving Flask app "app" (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
- * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
-[2021-05-31 06:20:53,691] INFO in app: Metrics API is called.
-49.207.194.242 - - [31/May/2021 06:28:25] "GET / HTTP/1.1" 200 -
-49.207.194.242 - - [31/May/2021 06:28:25] "GET /static/css/main.css HTTP/1.1" 200 -
-49.207.194.242 - - [31/May/2021 06:28:25] "GET /favicon.ico HTTP/1.1" 404 -
-[2021-05-31 06:30:38,902] INFO in app: Article: 2020 CNCF Annual Report with id: 1 is accessed
-49.207.194.242 - - [31/May/2021 06:30:38] "GET /1 HTTP/1.1" 200 -
-[2021-05-31 06:30:40,934] INFO in app: Article: KubeCon + CloudNativeCon 2021 with id: 2 is accessed
-49.207.194.242 - - [31/May/2021 06:30:40] "GET /2 HTTP/1.1" 200 -
-[2021-05-31 06:30:43,852] INFO in app: Article: Kubernetes v1.20 Release Notes with id: 3 is accessed
-49.207.194.242 - - [31/May/2021 06:30:43] "GET /3 HTTP/1.1" 200 -
-[2021-05-31 06:30:47,602] INFO in app: A Non-Existng article with id: 30 is accessed
-49.207.194.242 - - [31/May/2021 06:30:47] "GET /30 HTTP/1.1" 404 -
-[2021-05-31 06:30:49,487] INFO in app: <About Us> page is retrieved
-49.207.194.242 - - [31/May/2021 06:30:49] "GET /about HTTP/1.1" 200 -
-49.207.194.242 - - [31/May/2021 06:30:50] "GET /create HTTP/1.1" 200 -
-[2021-05-31 06:31:10,517] INFO in app: A new Article: Techtrends docker summit is created
-49.207.194.242 - - [31/May/2021 06:31:10] "POST /create HTTP/1.1" 302 -
-49.207.194.242 - - [31/May/2021 06:31:10] "GET / HTTP/1.1" 200 -
-[2021-05-31 06:31:13,994] INFO in app: Article: Techtrends docker summit with id: 7 is accessed
-49.207.194.242 - - [31/May/2021 06:31:13] "GET /7 HTTP/1.1" 200 -
-49.207.194.242 - - [31/May/2021 06:31:15] "GET / HTTP/1.1" 200 -
-[2021-05-31 06:31:21,849] INFO in app: HealthCheck Endpoint is called - Application state is <HEALTHY>.
-49.207.194.242 - - [31/May/2021 06:31:21] "GET /healthz HTTP/1.1" 200 -
-[2021-05-31 06:31:28,376] INFO in app: Metrics API is called.
-49.207.194.242 - - [31/May/2021 06:31:28] "GET /metrics HTTP/1.1" 200 -
-49.207.194.242 - - [31/May/2021 06:31:32] "GET / HTTP/1.1" 200 -
+
+INFO: werkzeug - [2021-06-05 10:07:07,095] -  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO: werkzeug - [2021-06-05 10:07:18,904] - 49.207.197.65 - - [05/Jun/2021 10:07:18] "GET / HTTP/1.1" 200 -
+INFO: werkzeug - [2021-06-05 10:07:19,224] - 49.207.197.65 - - [05/Jun/2021 10:07:19] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO: app - [2021-06-05 10:07:52,361] - <About Us> page is retrieved
+INFO: werkzeug - [2021-06-05 10:07:52,365] - 49.207.197.65 - - [05/Jun/2021 10:07:52] "GET /about HTTP/1.1" 200 -
+INFO: werkzeug - [2021-06-05 10:07:54,433] - 49.207.197.65 - - [05/Jun/2021 10:07:54] "GET / HTTP/1.1" 200 -
+INFO: app - [2021-06-05 10:07:56,174] - Article: 2020 CNCF Annual Report with id: 1 is accessed
+INFO: werkzeug - [2021-06-05 10:07:56,178] - 49.207.197.65 - - [05/Jun/2021 10:07:56] "GET /1 HTTP/1.1" 200 -
+INFO: werkzeug - [2021-06-05 10:07:58,731] - 49.207.197.65 - - [05/Jun/2021 10:07:58] "GET / HTTP/1.1" 200 -
+INFO: app - [2021-06-05 10:08:03,341] - A Non-Existing article with id: 30 is accessed
+INFO: werkzeug - [2021-06-05 10:08:03,345] - 49.207.197.65 - - [05/Jun/2021 10:08:03] "GET /30 HTTP/1.1" 404 -
+INFO: werkzeug - [2021-06-05 10:08:05,288] - 49.207.197.65 - - [05/Jun/2021 10:08:05] "GET / HTTP/1.1" 200 -
+INFO: werkzeug - [2021-06-05 10:08:10,642] - 49.207.197.65 - - [05/Jun/2021 10:08:10] "GET /create HTTP/1.1" 200 -
+INFO: app - [2021-06-05 10:08:33,052] - A new Article: TechTrends Docker Summit is created
+INFO: werkzeug - [2021-06-05 10:08:33,053] - 49.207.197.65 - - [05/Jun/2021 10:08:33] "POST /create HTTP/1.1" 302 -
+INFO: werkzeug - [2021-06-05 10:08:33,281] - 49.207.197.65 - - [05/Jun/2021 10:08:33] "GET / HTTP/1.1" 200 -
+INFO: app - [2021-06-05 10:08:37,336] - Article: TechTrends Docker Summit with id: 7 is accessed
+INFO: werkzeug - [2021-06-05 10:08:37,338] - 49.207.197.65 - - [05/Jun/2021 10:08:37] "GET /7 HTTP/1.1" 200 -
+INFO: werkzeug - [2021-06-05 10:08:39,134] - 49.207.197.65 - - [05/Jun/2021 10:08:39] "GET / HTTP/1.1" 200 -
+INFO: app - [2021-06-05 10:08:44,185] - HealthCheck Endpoint is called - Application state is <HEALTHY>.
+INFO: werkzeug - [2021-06-05 10:08:44,185] - 49.207.197.65 - - [05/Jun/2021 10:08:44] "GET /healthz HTTP/1.1" 200 -
+INFO: werkzeug - [2021-06-05 10:08:50,319] - 49.207.197.65 - - [05/Jun/2021 10:08:50] "GET /metriccs HTTP/1.1" 404 -
+INFO: app - [2021-06-05 10:08:53,562] - Metrics API is called.
+INFO: werkzeug - [2021-06-05 10:08:53,563] - 49.207.197.65 - - [05/Jun/2021 10:08:53] "GET /metrics HTTP/1.1" 200 -
