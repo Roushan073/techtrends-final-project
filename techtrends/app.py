@@ -46,7 +46,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-        app.logger.info('A Non-Existng article with id: {} is accessed'.format(post_id))
+        app.logger.info('A Non-Existing article with id: {} is accessed'.format(post_id))
         return render_template('404.html'), 404
     else:
         app.logger.info('Article: {} with id: {} is accessed'.format(post[2], post_id))
@@ -87,7 +87,7 @@ def create():
 @app.route('/healthz')
 def health_check():
     response = app.response_class(
-            response=json.dumps({"result" : "OK - healthy"}),
+            response=json.dumps({"result": "OK - healthy"}),
             status=200,
             mimetype='application/json'
     )
@@ -122,4 +122,4 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port='3111')
+    app.run(host='0.0.0.0', port='3111')
